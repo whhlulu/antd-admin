@@ -46,7 +46,7 @@ const Header = ({
             }}
             title={<span>
               <Icon type="user" />
-              {user.username}
+              {user.nick_name}
             </span>}
           >
             <Menu.Item key="logout">

@@ -73,7 +73,7 @@ const fetch = (options) => {
   }
   let params = new URLSearchParams()
   for (let key in cloneData) {
-    if (Object.prototype.hasOwnProperty.call(cloneData, 'key')) {
+    if (Object.prototype.hasOwnProperty.call(cloneData, key)) {
       params.append(key, cloneData[key])
     }
   }

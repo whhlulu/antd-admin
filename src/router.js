@@ -5,6 +5,7 @@ import dynamic from 'dva/dynamic'
 import App from 'routes/app'
 import { LocaleProvider } from 'antd'
 import enUS from 'antd/lib/locale-provider/en_US'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
 
 const { ConnectedRouter } = routerRedux
 
@@ -18,6 +19,16 @@ const Routers = function ({ history, app }) {
       path: '/dashboard',
       models: () => [import('./models/dashboard')],
       component: () => import('./routes/dashboard/'),
+    }, {
+      path: '/safeDoc/upload',
+      models: () => [import('./models/safeDoc/upload')],
+      component: () => import('./routes/safeDoc/upload'),
+    }, {
+      path: '/safeDoc/list',
+      component: () => import('./routes/safeDoc/list'),
+    }, {
+      path: '/safeDoc/riskTrack',
+      component: () => import('./routes/safeDoc/riskTrack'),
     }, {
       path: '/user',
       models: () => [import('./models/user')],
@@ -69,7 +80,7 @@ const Routers = function ({ history, app }) {
 
   return (
     <ConnectedRouter history={history}>
-      <LocaleProvider locale={enUS}>
+      <LocaleProvider locale={zhCN}>
         <App>
           <Switch>
             <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />

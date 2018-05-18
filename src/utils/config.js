@@ -26,7 +26,7 @@ module.exports = {
     userIsLogin: `${JCAP}/admin/user/isLogin`, // 登录状态校验
     userErpLogin: `${JCAP}/admin/user/erpLogin`, // erp账号登录
     userLogin: `${APIV1}/user/login`,
-    userLogout: `${APIV1}/user/logout`,
+    userLogout: `${JCAP}/admin/user/logout`, // 退出登录
     userInfo: `${APIV1}/userInfo`,
     users: `${APIV1}/users`,
     posts: `${APIV1}/posts`,

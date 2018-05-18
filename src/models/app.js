@@ -8,7 +8,6 @@ import { parse } from 'qs'
 import config from 'config'
 import { EnumRoleType } from 'enums'
 import { isLogin, erpLogin, logout } from 'services/app'
-import * as menusService from 'services/menus'
 import queryString from 'query-string'
 
 const { prefix, doMain } = config
@@ -18,14 +17,40 @@ export default {
   state: {
     user: {},
     permissions: {
-      visit: [],
+      visit: ['1', '2', '21', '22', '23'],
     },
     menu: [
       {
-        id: 1,
-        icon: 'laptop',
+        id: '1',
+        icon: 'dashboard',
         name: 'Dashboard',
-        router: '/dashboard',
+        route: '/dashboard',
+      }, {
+        id: '2',
+        bpid: '1',
+        name: '安全文档',
+        icon: 'safety',
+      }, {
+        id: '21',
+        bpid: '2',
+        mpid: '2',
+        name: '文件加密',
+        icon: 'cloud-upload',
+        route: '/safeDoc/upload',
+      }, {
+        id: '22',
+        bpid: '2',
+        mpid: '2',
+        name: '历史记录',
+        icon: 'profile',
+        route: '/safeDoc/list',
+      }, {
+        id: '23',
+        bpid: '2',
+        mpid: '2',
+        name: '风险追踪',
+        icon: 'tool',
+        route: '/safeDoc/riskTrack',
       },
     ],
     menuPopoverVisible: false,
@@ -66,23 +91,36 @@ export default {
 
     * query ({
       payload,
-    }, { call, select }) {
-      let { locationQuery } = yield select(state => state.app)
-      let result = null
-      if (locationQuery.loginType && locationQuery.loginType === '1') {
-        result = yield call(erpLogin, payload)
+    }, { call, put }) {
+      let checkResult = yield call(isLogin, payload)
+      if (checkResult.status) { // 已经登录
+        yield put({
+          type: 'updateState',
+          payload: {
+            user: checkResult.data,
+          },
+        })
       } else {
-        result = yield call(isLogin, payload)
+        let loginResult = yield call(erpLogin, { ReturnUrl: doMain })
+        if (loginResult.status) {
+          yield put({
+            type: 'updateState',
+            payload: {
+              user: loginResult.data,
+            },
+          })
+        } else {
+          window.location.href = `http://ssa.jd.com/sso/login?ReturnUrl=${doMain}` // 跳转erp
+        }
       }
-      console.log(result)
     },
 
     * logout ({
       payload,
-    }, { call, put }) {
-      const data = yield call(logout, parse(payload))
+    }, { call }) {
+      const data = yield call(logout, payload)
       if (data.success) {
-        yield put({ type: 'query' })
+        window.location.href = `http://ssa.jd.com/sso/login?ReturnUrl=${doMain}` // 跳转erp
       } else {
         throw (data)
       }

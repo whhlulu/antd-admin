@@ -11,14 +11,6 @@ export function login (params) {
   })
 }
 
-export function logout (params) {
-  return request({
-    url: userLogout,
-    method: 'get',
-    data: params,
-  })
-}
-
 export function isLogin () {
   return request({
     url: userIsLogin,
@@ -32,5 +24,12 @@ export function erpLogin (params) {
     url: userErpLogin,
     method: 'get',
     data: params,
+  })
+}
+
+export function logout () {
+  return request({
+    url: userLogout,
+    method: 'get',
   })
 }

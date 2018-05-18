@@ -19,11 +19,11 @@ export default {
       "changeOrigin": true,
       "pathRewrite": { "^/dev": "" }
     },
-    // "/api/v2": {
-    //   "target": "http://192.168.0.110",
-    //   "changeOrigin": true,
-    //   "pathRewrite": { "^/api/v2" : "/api/v2" }
-    // }
+    "/api/v1": {
+      "target": "https://api.seniverse.com/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api/v1" : "/api/v1" }
+    }
   },
   env: {
     development: {
