@@ -1,24 +1,21 @@
 const APIV1 = '/api/v1'
 const APIV2 = '/api/v2'
 let JCAP = 'http://jcp.jd.com/api'
-/* global window */
-let domain = window.location.origin
-let dev = domain.indexOf('admin.jcp.jd.com')
-
-// 本地开发环境
-if (dev !== -1) {
+let jdOrigin = 'http://jcp.jd.com'
+if (process.env.NODE_ENV === 'development') {
   JCAP = 'http://admin.jcp.jd.com:8000/dev' // 测试环境接口前面添加dev 以方便webpack-dev-server代理识别   admin会与现有页面路由admin冲突
+  jdOrigin = 'http://admin.jcp.jd.com:8000'
 }
 module.exports = {
-  name: 'AntD Admin',
+  name: '安全中心',
   prefix: 'antdAdmin',
   footerText: 'Ant Design Admin  © 2017 zuiidea',
-  logo: '/logo.svg',
+  logo: '/logo.png',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
   CORS: [],
   openPages: ['/login'],
-  doMain: domain,
+  doMain: jdOrigin,
   apiPrefix: '/api/v1',
   APIV1,
   APIV2,
@@ -29,7 +26,7 @@ module.exports = {
     userLogout: `${JCAP}/admin/user/logout`, // 退出登录
     userInfo: `${APIV1}/userInfo`,
     users: `${APIV1}/users`,
-    posts: `${APIV1}/posts`,
+    documentsList: `${APIV1}/documents/query`,
     user: `${APIV1}/user/:id`,
     dashboard: `${APIV1}/dashboard`,
     menus: `${APIV1}/menus`,

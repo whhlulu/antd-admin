@@ -16,65 +16,24 @@ const Routers = function ({ history, app }) {
   })
   const routes = [
     {
-      path: '/dashboard',
-      models: () => [import('./models/dashboard')],
-      component: () => import('./routes/dashboard/'),
-    }, {
-      path: '/safeDoc/upload',
-      models: () => [import('./models/safeDoc/upload')],
-      component: () => import('./routes/safeDoc/upload'),
-    }, {
-      path: '/safeDoc/list',
-      component: () => import('./routes/safeDoc/list'),
-    }, {
-      path: '/safeDoc/riskTrack',
-      component: () => import('./routes/safeDoc/riskTrack'),
-    }, {
-      path: '/user',
-      models: () => [import('./models/user')],
-      component: () => import('./routes/user/'),
-    }, {
-      path: '/user/:id',
-      models: () => [import('./models/user/detail')],
-      component: () => import('./routes/user/detail/'),
-    }, {
       path: '/login',
       models: () => [import('./models/login')],
       component: () => import('./routes/login/'),
     }, {
-      path: '/request',
-      component: () => import('./routes/request/'),
+      path: '/dashboard',
+      models: () => [import('./models/dashboard')],
+      component: () => import('./routes/dashboard/'),
     }, {
-      path: '/UIElement/iconfont',
-      component: () => import('./routes/UIElement/iconfont/'),
+      path: '/safeDoc/encryption',
+      models: () => [import('./models/safeDoc/encryption')],
+      component: () => import('./routes/safeDoc/encryption'),
     }, {
-      path: '/UIElement/search',
-      component: () => import('./routes/UIElement/search/'),
+      path: '/safeDoc/documents',
+      models: () => [import('./models/safeDoc/documents')],
+      component: () => import('./routes/safeDoc/documents'),
     }, {
-      path: '/UIElement/dropOption',
-      component: () => import('./routes/UIElement/dropOption/'),
-    }, {
-      path: '/UIElement/layer',
-      component: () => import('./routes/UIElement/layer/'),
-    }, {
-      path: '/UIElement/dataTable',
-      component: () => import('./routes/UIElement/dataTable/'),
-    }, {
-      path: '/UIElement/editor',
-      component: () => import('./routes/UIElement/editor/'),
-    }, {
-      path: '/chart/ECharts',
-      component: () => import('./routes/chart/ECharts/'),
-    }, {
-      path: '/chart/highCharts',
-      component: () => import('./routes/chart/highCharts/'),
-    }, {
-      path: '/chart/Recharts',
-      component: () => import('./routes/chart/Recharts/'),
-    }, {
-      path: '/post',
-      models: () => [import('./models/post')],
-      component: () => import('./routes/post/'),
+      path: '/safeDoc/riskTrack',
+      component: () => import('./routes/safeDoc/riskTrack'),
     },
   ]
 
@@ -83,7 +42,7 @@ const Routers = function ({ history, app }) {
       <LocaleProvider locale={zhCN}>
         <App>
           <Switch>
-            <Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />
+            <Route exact path="/" render={() => (<Redirect to="/safeDoc/documents" />)} />
             {
             routes.map(({ path, ...dynamics }, key) => (
               <Route key={key}

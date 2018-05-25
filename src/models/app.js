@@ -36,14 +36,14 @@ export default {
         mpid: '2',
         name: '文件加密',
         icon: 'cloud-upload',
-        route: '/safeDoc/upload',
+        route: '/safeDoc/encryption',
       }, {
         id: '22',
         bpid: '2',
         mpid: '2',
         name: '历史记录',
         icon: 'profile',
-        route: '/safeDoc/list',
+        route: '/safeDoc/documents',
       }, {
         id: '23',
         bpid: '2',

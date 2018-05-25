@@ -1,7 +1,9 @@
 import { request, config } from 'utils'
 
 const { api } = config
-const { userIsLogin, userErpLogin, userLogout, userLogin } = api
+const {
+  userIsLogin, userErpLogin, userLogout, userLogin,
+} = api
 
 export function login (params) {
   return request({

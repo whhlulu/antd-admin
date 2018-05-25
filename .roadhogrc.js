@@ -19,11 +19,6 @@ export default {
       "changeOrigin": true,
       "pathRewrite": { "^/dev": "" }
     },
-    "/api/v1": {
-      "target": "https://api.seniverse.com/",
-      "changeOrigin": true,
-      "pathRewrite": { "^/api/v1" : "/api/v1" }
-    }
   },
   env: {
     development: {

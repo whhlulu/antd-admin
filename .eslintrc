@@ -1,6 +1,8 @@
 {
   "extends": "airbnb",
   "rules": {
+    "prefer-destructuring": ["error", {"object": false, "array": false}],
+    "react/prop-types": 0,
     "arrow-body-style": [0, "never"],
     "comma-dangle": [2, "always-multiline"],
     "global-require": 0,
@@ -13,7 +15,6 @@
       "allowShortCircuit": true,
       "allowTernary": true
     }],
-    "linebreak-style": 0,
     "no-console": 0,
     "no-extend-native": 0,
     "no-param-reassign": 0,
