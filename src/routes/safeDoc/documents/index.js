@@ -45,9 +45,8 @@ const Documents = ({
     rowKey: 'id',
     columns: [{
       title: '序号',
-      render: (text, record, index) => (
-        (index + 1)
-      ),
+      key:'id',
+      render: index => index + 1,
     }, {
       title: '文档名称',
       dataIndex: 'name',
@@ -60,18 +59,18 @@ const Documents = ({
     }, {
       title: '处理状态',
       dataIndex: 'status',
-      render: (text, record) => (text === '0' ? <span key={record.id} style={{ color: 'green' }}>处理中</span> : '处理完成'),
+      render: (text, record) => (text === '0' ? <span style={{ color: 'green' }}>处理中</span> : '处理完成'),
     }, {
       title: '水印详情',
-      render: record => (<Button key={record.id} size="small" onClick={showModal.bind(null, record)}>查看</Button>),
+      render: record => (<Button size="small" onClick={showModal.bind(null, record)}>查看</Button>),
     }, {
       title: '原始图片文件',
       dataIndex: 'url1',
-      render: (text, record) => (<a key={record.id} href={text} target="_blank">{record.name}</a>),
+      render: (text, record) => (<a href={text} target="_blank">{record.name}</a>),
     }, {
       title: '水印处理文件',
       dataIndex: 'url2',
-      render: (text, record) => (<a key={record.id} href={text} target="_blank">{record.name}</a>),
+      render: (text, record) => (<a href={text} target="_blank">{record.name}</a>),
     }],
     pagination,
     dataSource: list,
